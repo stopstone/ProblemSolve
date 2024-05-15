@@ -7,7 +7,6 @@ public class Main {
     public static int V;
     public static boolean[] visit;
     public static int[][] arr;
-    public static StringBuilder sb = new StringBuilder();
     public static Queue<Integer> q = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
