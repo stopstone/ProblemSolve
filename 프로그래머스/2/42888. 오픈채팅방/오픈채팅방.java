@@ -6,6 +6,7 @@ class Solution {
     final static String COMMAND_CHANGE = "Change";
     final static String ENTER_MESSAGE = "님이 들어왔습니다.";
     final static String LEAVE_MESSAGE = "님이 나갔습니다.";
+    final static String ERROR_MESSAGE = "[ERROR] 다시 시도해주세요.";
     final static String DELIMITER = " ";
     
     HashMap<String, String> users;
@@ -46,7 +47,11 @@ class Solution {
     }
     
     private void changeToUserInfo() {
-        users.replace(info[1], info[2]);
+        if(users.containsKey(info[1])) {
+            users.replace(info[1], info[2]);
+        } else {
+            System.out.println(ERROR_MESSAGE);
+        }
     }
     
     private void generateUserLogTable() {
