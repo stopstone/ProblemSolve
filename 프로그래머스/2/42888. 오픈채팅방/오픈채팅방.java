@@ -8,12 +8,12 @@ class Solution {
         for(String rec : record) {
             String[] info = rec.split(" ");
 
-            if(info[0].equals("Leave")) {
-                log.add(new String[]{info[1], "님이 나갔습니다."});
-            }
-            else if(info[0].equals("Enter")) {
+            if(info[0].equals("Enter")) {
                 users.put(info[1], info[2]);
                 log.add(new String[]{info[1], "님이 들어왔습니다."});
+            }
+            else if(info[0].equals("Leave")) {
+                log.add(new String[]{info[1], "님이 나갔습니다."});
             }
             else if(info[0].equals("Change")) {
                 users.replace(info[1], info[2]);
