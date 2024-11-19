@@ -3,6 +3,15 @@ fun main() {
     val list = IntArray(size) {
         readln().toInt()
     }
+
+    insertSortByAscending(list)
+
+    list.forEach {
+        println(it)
+    }
+}
+
+private fun insertSortByAscending(list: IntArray) {
     for (i in list.indices) {
         var temp: Int
         for (j in 0..<i) {
@@ -12,9 +21,5 @@ fun main() {
                 list[j] = temp
             }
         }
-    }
-
-    list.forEach {
-        println(it)
     }
 }
