@@ -6,6 +6,7 @@ data class Parking(
     val parkingType: String,
 )
 
+
 class Solution {
     fun solution(
         fees: IntArray,
@@ -22,7 +23,7 @@ class Solution {
         records.forEach { record ->
             val parkingInfo = record.split(" ")
             val parking = Parking(
-                time = parkingInfo[0].transferTimeFormat(),
+                time = parkingInfo[0].toMinute(),
                 carId = parkingInfo[1],
                 parkingType = parkingInfo[2],
             )
@@ -36,7 +37,7 @@ class Solution {
             if (records.size % 2 == 1) {
                 val outInfo = Parking(
                     carId = records.first().carId,
-                    time = "23:59".transferTimeFormat(),
+                    time = "23:59".toMinute(),
                     parkingType = "OUT",
                 )
                 records.add(outInfo)
@@ -61,6 +62,8 @@ class Solution {
             totalTimes[carId] = totalTime
         }
 
+
+
         // 요금 계산 (기본시간 이하라면 기본요금, 초과하면 추가 요금 계산)
         val feeMap = totalTimes.mapValues { (_, time) ->
             if (time <= 기본시간) {
@@ -74,7 +77,7 @@ class Solution {
     }
 
     // HH:MM 형태 시간을 변환하는 함수
-    private fun String.transferTimeFormat(): Int {
+    private fun String.toMinute(): Int {
         var (hour, minute) = this.split(":").map { it.toInt() }
         minute += hour * 60
         return minute
